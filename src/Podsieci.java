@@ -1,23 +1,29 @@
 public class Podsieci {
     public Podsieci(String ip, char selectedOption){
         if (selectedOption == 'a' || selectedOption == 'A'){
-            checkKlasa(ip);
+            System.out.println(checkKlasa(ip));
 
         }
     }
 
-    private void checkKlasa(String ip){
-        int i = 0;
+    private int checkKlasa(String ip){
         String[] ipAll = ip.split("\\.");
-        String[] oktetArray = new String[4];
+        int[] oktetArray = new int[4];
         
-        for(String oktet : ipAll){
-            oktetArray[i] = oktet;
-            i++;
+        for(int i = 0; i < ipAll.length; i++){
+            oktetArray[i] = Integer.parseInt(ipAll[i]);
+            if (oktetArray[i]>255){
+                return -1;
+            }
         }
-        
-        for(String a : oktetArray)
-            System.out.println(a);
+
+
+        if(oktetArray[0] >= 1 && oktetArray[0] <= 127) return 8;
+        else if (oktetArray[0] <= 191) return 16;
+        else if (oktetArray[0] <= 223) return 24;
+        else return -1;
+
+
 
     }
 

@@ -21,8 +21,6 @@ public class Kalkulator {
             } else {
                 System.out.println("Błędnie wybrana opcja. Wybierz, czy chcesz obliczyć podsieci na daną :\n a)liczbę podsieci \n b)liczbę hostów");
                 selectedOption = in.next().charAt(0);
-                
-
             }
         }
 
