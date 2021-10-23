@@ -5,6 +5,8 @@ public class Podsieci {
     public Podsieci(String ip, char selectedOption, int iloscPodzialu){
         if (selectedOption == 'a' || selectedOption == 'A'){
             System.out.println(checkKlasa(ip));
+            createMaska(oktetArray, checkKlasa(ip));
+
 
         }
     }
@@ -27,11 +29,22 @@ public class Podsieci {
     private int[] ipToArray(String ip){
         String[] ipAll = ip.split("\\.");
 
-
         for(int i = 0; i < ipAll.length; i++){
             oktetArray[i] = Integer.parseInt(ipAll[i]);
         }
+
         return oktetArray;
     }
+
+    private void createMaska(int[] oktetArray, int basicMaska){
+        int i;
+
+        for (i = 0; i < basicMaska; i++) System.out.print("1");
+        for (int j = 0; i + j < 32; j++) System.out.print("0");
+
+
+    }
+
+
 
 }
